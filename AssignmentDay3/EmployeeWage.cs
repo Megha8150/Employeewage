@@ -18,7 +18,9 @@ namespace AssignmentDay3
             int empMonthlyWage = 0;
             int empHrs = 0;
             int empWage = 0;
-            for (int i = 0; i < DAYS_PER_MONTH; i++)
+            int totalHours = 0;
+            int totalDays = 0;
+            while(totalHours<100 && totalDays<DAYS_PER_MONTH)
             {
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
@@ -35,16 +37,23 @@ namespace AssignmentDay3
                         break;
                     default:
                         Console.WriteLine("employee is absent");
+                        empHrs = 0;
                         break;
 
                 }
+                totalDays++;
+                totalHours = totalHours + empHrs;
 
-                empWage = empHrs * WAGE_PER_HOUR;
-                empMonthlyWage = empMonthlyWage+empWage;
+
+               
+                
               
 
             }
-            Console.WriteLine(empMonthlyWage);
+            empMonthlyWage = totalHours * WAGE_PER_HOUR;
+            Console.WriteLine("Employee monthly wage is " + empMonthlyWage);
+            Console.WriteLine("Total workdays is " + totalDays );
+            Console.WriteLine("Total work hours is " + totalHours );
         }
 
     }
