@@ -10,17 +10,22 @@ namespace AssignmentDay3
     {
        
         public static void employee()
-        {  
-            Console.WriteLine("Welcome to Employee wage Computation program on master branch");
-            int IS_PRESENT = 1;
+        {
+            int IS_FULL_TIME = 1;
+            int WAGE_PER_HOUR = 20;
+            int empHrs = 0;
+            int empWage = 0;
             Random random = new Random();
             int empCheck = random.Next(0,2);
-            if(empCheck==IS_PRESENT)
+            if(empCheck==IS_FULL_TIME)
             {
-                Console.WriteLine("Employee is present");
+                empHrs = 8;
+                empWage = empHrs * WAGE_PER_HOUR;
+                Console.WriteLine(empWage);
             }
+          
             else
-            {
+            { 
                 Console.WriteLine("Employee is absent");
             }
 
