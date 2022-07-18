@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
- namespace AssignmentDay3
+namespace AssignmentDay3
 {
     public interface IComputeEmpWage
     {
         public void addCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth);
         public void computeEmpWage();
+
+        public int getTotalWage(string company);
 
     }
     public class EmpWageBuilder : IComputeEmpWage
@@ -21,14 +23,14 @@ using System.Threading.Tasks;
         private Dictionary<string, CompanyEmpWage> companyToEmpWageMap;
         public EmpWageBuilder()
         {
-            this.companyEmpWageList = new LinkedList<CompanyEmpWage> ();
+            this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
             this.companyToEmpWageMap = new Dictionary<string, CompanyEmpWage>();
         }
         public void addCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
-            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);    
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
             this.companyEmpWageList.AddLast(companyEmpWage);
-            this.companyToEmpWageMap.Add(company, companyEmpWage);  
+            this.companyToEmpWageMap.Add(company, companyEmpWage);
         }
 
         public void computeEmpWage()
@@ -69,34 +71,14 @@ using System.Threading.Tasks;
             }
             return totalEmpHrs * companyEmpWage.empRatePerHour;
         }
-        public class CompanyEmpWage
+       
+        public int getTotalWage(string company)
         {
-            public string company;
-            public int empRatePerHour;
-            public int numOfWorkingDays;
-            public int maxHoursPerMonth;
-            public int totalEmpWage;
-
-            public CompanyEmpWage(string company, int empRatePerHour, int nunumOfWorkingDays, int maxHoursPerMonth)
-            {
-                this.company = company;
-                this.empRatePerHour = empRatePerHour;
-                this.numOfWorkingDays = nunumOfWorkingDays;
-                this.maxHoursPerMonth = maxHoursPerMonth;
-            }
-            public void setTotalEmpWage(int totalEmpWage)
-            {
-                this.totalEmpWage = totalEmpWage;
-            }
-            public string tostring()
-            {
-                return "Total Emp Wage for Company : " + this.company + " is " + this.totalEmpWage;
-            }
-
+            return this.companyToEmpWageMap[company].totalEmpWage;
         }
-        
     }
 
-   
 }
+
+
 
