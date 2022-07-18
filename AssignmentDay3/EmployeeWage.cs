@@ -4,22 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AssignmentDay3
+ namespace AssignmentDay3
 {
      public class EmployeeWage
     {
-       
+      static int IS_FULL_TIME = 1;
+        static int IS_PART_TIME = 2;
+        static int WAGE_PER_HOUR = 20;
+        static int DAYS_PER_MONTH = 20;
+        static int empMonthlyWage = 0;
+        static int empHrs = 0;
+        static int empWage = 0;
+        static int totalHours = 0;
+        static int totalDays = 0;
+
         public static void employee()
         {
-            int IS_FULL_TIME = 1;
-            int IS_PART_TIME = 2;
-            int WAGE_PER_HOUR = 20;
-            int DAYS_PER_MONTH = 20;
-            int empMonthlyWage = 0;
-            int empHrs = 0;
-            int empWage = 0;
-            int totalHours = 0;
-            int totalDays = 0;
+            
             while(totalHours<100 && totalDays<DAYS_PER_MONTH)
             {
                 Random random = new Random();
@@ -42,12 +43,7 @@ namespace AssignmentDay3
 
                 }
                 totalDays++;
-                totalHours = totalHours + empHrs;
-
-
-               
-                
-              
+                totalHours = totalHours + empHrs;                       
 
             }
             empMonthlyWage = totalHours * WAGE_PER_HOUR;
@@ -58,3 +54,4 @@ namespace AssignmentDay3
 
     }
 }
+
