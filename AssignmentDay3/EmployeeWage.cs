@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
  namespace AssignmentDay3
 {
-    public class EmpWageBuilderArray
+    public interface IComputeEmpWage
+    {
+        public void addCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth);
+        public void computeEmpWage();
+
+    }
+    public class EmpWageBuilderArray : IComputeEmpWage
     {
         public const int IS_FULL_TIME = 2;
         public const int IS_PART_TIME = 1;
@@ -62,7 +68,7 @@ using System.Threading.Tasks;
             }
             return totalEmpHrs * companyEmpWage.empRatePerHour;
         }
-            public class CompanyEmpWage
+        public class CompanyEmpWage
         {
             public string company;
             public int empRatePerHour;
@@ -70,7 +76,7 @@ using System.Threading.Tasks;
             public int maxHoursPerMonth;
             public int totalEmpWage;
 
-            public CompanyEmpWage(string company, int empRatePerHour, int nunumOfWorkingDays, int maxHoursPerMonth )
+            public CompanyEmpWage(string company, int empRatePerHour, int nunumOfWorkingDays, int maxHoursPerMonth)
             {
                 this.company = company;
                 this.empRatePerHour = empRatePerHour;
@@ -83,8 +89,9 @@ using System.Threading.Tasks;
             }
             public string tostring()
             {
-                return "Total Emp Wage for Company : " + this.company + " is "  + this.totalEmpWage;
+                return "Total Emp Wage for Company : " + this.company + " is " + this.totalEmpWage;
             }
+
         }
         
     }
