@@ -10,18 +10,17 @@ using System.Threading.Tasks;
     {
       static int IS_FULL_TIME = 1;
         static int IS_PART_TIME = 2;
-        static int WAGE_PER_HOUR = 20;
-        static int DAYS_PER_MONTH = 20;
-        static int empMonthlyWage = 0;
-        static int empHrs = 0;
-        static int empWage = 0;
-        static int totalHours = 0;
-        static int totalDays = 0;
+        
 
-        public static void employee()
+        public static void Employee(string company, int wagePerhour, int daysPerMonth, int workHourPerMonth)
         {
-            
-            while(totalHours<100 && totalDays<DAYS_PER_MONTH)
+             int empHrs = 0;
+            int empWage = 0;
+            int totalHours = 0;
+            int totalDays = 0;
+            int empMonthlyWage = 0;
+
+            while (totalHours<workHourPerMonth && totalDays<daysPerMonth)
             {
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
@@ -46,8 +45,8 @@ using System.Threading.Tasks;
                 totalHours = totalHours + empHrs;                       
 
             }
-            empMonthlyWage = totalHours * WAGE_PER_HOUR;
-            Console.WriteLine("Employee monthly wage is " + empMonthlyWage);
+            empMonthlyWage = totalHours * wagePerhour;
+            Console.WriteLine("Employee monthly wage for company " +company+ " is " +empMonthlyWage);
             Console.WriteLine("Total workdays is " + totalDays );
             Console.WriteLine("Total work hours is " + totalHours );
         }
